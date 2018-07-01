@@ -15,7 +15,7 @@ import sys
 from spotipy.oauth2 import SpotifyClientCredentials
 import pprint
 
-client_credentials_manager = SpotifyClientCredentials(client_id='***REMOVED***', client_secret='***REMOVED***')
+client_credentials_manager = SpotifyClientCredentials(client_id='ID_HERE', client_secret='SECRET_ID_HERE')
 spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 warnings.filterwarnings('ignore')
