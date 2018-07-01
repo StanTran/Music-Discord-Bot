@@ -1,4 +1,4 @@
-#User inputs song and artist, use spotify to reccomend a number of songs
+#User inputs song and artist, use spotify to recommend a number of songs
 #From that list, use mood to narrow down
 #Recommend list based off of both Spotify and mood
 
