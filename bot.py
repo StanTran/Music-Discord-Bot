@@ -46,4 +46,4 @@ async def on_message(message):
             print(track_name + " by " + artist_name)
 
 
-client.run('***REMOVED***')
+client.run('Token')
