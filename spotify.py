@@ -6,7 +6,7 @@ from spotipy.oauth2 import SpotifyClientCredentials
 class Spotify:
 
 	def __init__(self):
-		client_credentials_manager = SpotifyClientCredentials(client_id='ID_HERE', client_secret='SECRET_ID_HERE')
+		client_credentials_manager = SpotifyClientCredentials(client_id='***REMOVED***', client_secret='***REMOVED***')
 		self.spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 	def find_song(self, song, artist):
