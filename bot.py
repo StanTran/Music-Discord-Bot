@@ -110,4 +110,4 @@ async def on_message(message):
         await client.send_message(message.channel, 'Recommendations for \'' + song + ' by ' + artist + '\':')
         await client.send_message(message.channel, '{}, {}, {}, {}, {}'.format(rec_emotion[0][0], rec_emotion[1][0], rec_emotion[2][0], rec_emotion[3][0], rec_emotion[4][0]))
 
-client.run('***REMOVED***')
+client.run('TOKEN')
