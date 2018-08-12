@@ -1,3 +1,6 @@
+
+#FIX INDEX OUT OF BOUNDS AT END
+
 import discord
 from spotify import *
 from emotion import *
@@ -19,33 +22,60 @@ async def on_message(message):
 
     if message.content == '!stop': await client.logout()
 
+    if message.content == '!help':
+        await client.send_message(message.channel, 'Invoke the bot with the command \'!rec\'')
+        await client.send_message(message.channel, 'Then enter a song, artist, and genre in the following format:')
+        await client.send_message(message.channel, '$song $artist $genre  (genre is optional)')
+
     if message.content.startswith('!rec'):
 
         original_emotion = None
         while original_emotion is None:
-            await client.send_message(message.channel, 'Enter in the name of a song')
-            response = await client.wait_for_message(timeout=30.0, author=message.author)
-            song = response.content
+            response = None
+            while response is None: 
+                await client.send_message(message.channel, 'Enter a song, artist, and genre')
+                response = await client.wait_for_message(timeout=30.0, author=message.author)
+                response = response.content
+                if '$' not in response:
+                    await client.send_message(message.channel, 'Invalid format. Please try again.')
+                    response = None
+                else:
+                    response = response.split('$')
+                    if len(response) < 3 or len(response) > 4:
+                        await client.send_message(message.channel, 'Invalid format. Please try again.')
+                        response = None
+                    else:
+                        for index, items in enumerate(response):
+                            if index == 0:
+                                continue
+                            elif index == 1:
+                                song = items.strip()
+                            elif index == 2:
+                                artist = items.strip()
+                            else:
+                                genre = items.strip()
+
             index = set([0])
             for counter, x in enumerate(song):
                 if x == ' ':
                     index.add(counter + 1)
             song = "".join(c.upper() if x in index else c for x, c in enumerate(song))
-            await client.send_message(message.channel, 'Enter in the name of the artist')
-            response = await client.wait_for_message(timeout=30.0, author=message.author)
-            artist = response.content
+
+            index = set([0])
             for counter, x in enumerate(artist):
                 if x == ' ':
                     index.add(counter + 1)
             artist = "".join(c.upper() if x in index else c for x, c in enumerate(artist))
-            await client.send_message(message.channel, 'Enter a genre if possible, if not, enter \'none\'')
-            response = await client.wait_for_message(timeout=30.0, author=message.author)
-            genre = response.content
-            for counter, x in enumerate(artist):
-                if x == ' ':
-                    index.add(counter + 1)
-            genre = "".join(c.lower() if x in index else c for x, c in enumerate(artist))
+
+            genre = None
+            if len(response) == 4:
+                index = set([0])
+                for counter, x in enumerate(genre):
+                    if x == ' ':
+                        index.add(counter + 1)
+                genre = "".join(c.lower() if x in index else c for x, c in enumerate(genre))
             
+
             analyzer = Emotion()
             try:
                 original_emotion = analyzer.get_emotion(song, artist)
@@ -59,7 +89,7 @@ async def on_message(message):
         list_genres = spotify.get_genres()
         if genre not in list_genres['genres']:
             genre = None
-        recommendations = spotify.get_recommendations(track, genre, limit = 10)
+        recommendations = spotify.get_recommendations(track, genre, limit = 15)
         rec_emotion = dict()
         for index, name in enumerate(recommendations):
             track_data = recommendations[index]
@@ -80,4 +110,4 @@ async def on_message(message):
         await client.send_message(message.channel, 'Recommendations for \'' + song + ' by ' + artist + '\':')
         await client.send_message(message.channel, '{}, {}, {}, {}, {}'.format(rec_emotion[0][0], rec_emotion[1][0], rec_emotion[2][0], rec_emotion[3][0], rec_emotion[4][0]))
 
-client.run('TOKEN')
+client.run('***REMOVED***')
