@@ -1,5 +1,5 @@
 # Bothoven
-A Discord bot that returns a list of recommendations based off of the initial song's emotion. The bot allows the user to input a song and begins to analyze the lyrics to determine which songs to recommend. 
+A Discord bot that has the user input a song and returns a list of recommendations based off of the song's emotion. Bothoven analyzes the lyrics of the song to capture a song's emotion and then outputs a list of songs that are similar in emotion.
 
 ## Getting Started
 Follow the instructions to get Bothoven working in your very own Discord server!
