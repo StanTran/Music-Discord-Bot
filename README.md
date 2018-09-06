@@ -1,5 +1,5 @@
 # Bothoven
-A Discord bot that uses a combination of Spotify API and Natural Language Processing to retrieve a list of song recommendations based off of emotion. Based off of the initial song a user inputted, the bot begins retrieving recommendations using Spotify API. Each song's lyrics are then analyzed and compared with the initial song. The emotions being compared are sadness, joy, fear, disgust, and anger. The bot then returns the five most similar songs based off of the emotion.
+A Discord bot that returns a list of recommendations based off of the initial song's emotion. The bot allows the user to input a song and begins to analyze the lyrics to determine which songs to recommend. 
 
 ## Getting Started
 Follow the instructions to get Bothoven working in your very own Discord server!
