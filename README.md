@@ -41,4 +41,4 @@ Note: Genre is optional
 * [IBM Watson](https://www.ibm.com/watson/) - Used for Natural Language Understanding
 
 ## Authors
-* **Stanley Tram** - [stanltran](https://github.com/stanltran/Bothoven)
+* **Stanley Tran** - [stanltran](https://github.com/stanltran/Bothoven)
