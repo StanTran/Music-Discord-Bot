@@ -1,6 +1,3 @@
-
-#FIX INDEX OUT OF BOUNDS AT END
-
 import discord
 from spotify import *
 from emotion import *
